@@ -22,7 +22,7 @@ pipeline {
     steps {
         script {
             // Use MySQL client to connect to the running MySQL container
-          //  sh 'mysql -h 172.18.0.2 -u root -e "USE SkiStationDB;"'
+            sh 'mysql -h 172.18.0.2 -u root -e "USE SkiStationDB;"'
                }
           }
      }
@@ -30,20 +30,20 @@ pipeline {
 
         stage("SRC Analysis Testing") {
             steps {
-              //  sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=adminsonar"
+                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=adminsonar"
             }
         }
 
         stage("Build Docker image") {
             steps {
-              //  sh "docker build -t aminesnoussi/devops:skistation ."
+                sh "docker build -t aminesnoussi/devops:skistation ."
             }
         }
 
          stage('Push in dockerhub') {
             steps {
-              //  sh "docker login -u aminesnoussi -p AliSnoussi1956."
-              //  sh "docker push aminesnoussi/devops:skistation"
+                sh "docker login -u aminesnoussi -p AliSnoussi1956."
+                sh "docker push aminesnoussi/devops:skistation"
             }
         }
 
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     // Run unit tests using Maven
-                   // sh 'mvn test'
+                    sh 'mvn test'
                 }
             }
         }
