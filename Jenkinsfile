@@ -61,6 +61,7 @@ pipeline {
                 sh "docker compose up -d"
             }
         }
+    }
 
     post {
         always {
