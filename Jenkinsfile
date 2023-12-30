@@ -22,7 +22,7 @@ pipeline {
     steps {
         script {
             // Use MySQL client to connect to the running MySQL container
-            sh 'mysql -h 172.18.0.2 -u root -proot -e "USE SkiStationDB;"'
+            sh 'mysql -h 172.18.0.2 -u root -proot -e "USE skistationDB;"'
                }
           }
      }
