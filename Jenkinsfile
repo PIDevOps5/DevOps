@@ -1,4 +1,4 @@
-pipeline {
+*pipeline {
 
     agent any
 
@@ -56,18 +56,11 @@ pipeline {
             }
         }
 
-        stage("Deploy Artifact to private registry") {
+        stage("Docker compose") {
             steps {
-                sh "..............."
+                sh "docker compose up -d"
             }
         }
-
-        stage("Deploy Dokcer Image to private registry") {
-            steps {
-                sh "..............."
-            }
-        }
-    }
 
     post {
         always {
