@@ -12,9 +12,9 @@ pipeline {
             }
         }
 
-        stage("MVN Clean") {
+        stage("Build") {
             steps {
-                sh "mvn clean"
+                sh "mvn clean install -DskipTests"
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
 
         stage("SRC Analysis Testing") {
             steps {
-                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=adminsonar"
+                sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar"
             }
         }
 
