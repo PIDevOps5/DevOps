@@ -12,13 +12,13 @@ services:
       - /home/mysql/data:/var/lib/mysql
 
   spring_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: devops-spring_app   # Assuming this is the image you built for your Spring Boot app
     container_name: spring_app
     restart: on-failure
     ports:
       - 9090:9090
     depends_on:
       - mysqldb
+    command: ["java", "-jar", "app.jar"]
+
 
