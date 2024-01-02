@@ -47,20 +47,27 @@ pipeline {
             }
         }
 
-        stage('Unit Test') {
-            steps {
-                script {
-                    // Run unit tests using Maven
-                    sh 'mvn test'
-                }
-            }
-        }
-
         stage("Docker compose") {
             steps {
                 sh "docker compose up -d"
             }
         }
+
+        stage('Nexus') {
+            steps {
+                sh "mvn clean compile -DskipTests"
+            }
+        }
+	
+
+	stage('Junit Mockito') {
+            steps {
+                sh "mvn clean test"
+            }
+        }
+
+
+
     }
 
     post {
